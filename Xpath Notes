@@ -1,0 +1,57 @@
+xpath - xml path
+html tag components - tagname, attribute, value, text
+1. Absolute - /
+2. Relative xpath - //
+	2.1 Basics
+	2.2 Axes
+Basics Relative xpath
+tagname, attribute, value, text
+1. Attribute based xpath
+for username label
+//tagname[@attribute = 'value']
+//label[@for = 'username']
+class = "Leaftaps Login"
+//input[@class = 'Leaftaps Login']
+1.1 Partial attribute based xpath
+//tagname[contains(@attribute,'value')]
+2. Text Based xpath
+//tagname[text()='text value']
+<h2>Leaftaps Login</h2>
+//h2[text()='Leaftaps Login']
+2.1 Partial Text based xpath
+//tagname[contains(text(),'value')]
+//h2[contains(text(),'Login')]
+3. Collections (//xpath)[index] -> index - 1
+(//span[@class='a-size-medium a-color-base a-text-normal'])[3]
+
+
+
+
+Axes - Xpath
+1. Parent -> Child
+parent xpath/child tagname or xpath
+//p[@class='top']/label
+2. Child -> Parent
+// child's xpath/parent::parent's tagname or xpath
+//label[@for='username']/parent::p
+//child's xpath/..
+3. Grand Parent -> Grand Child
+Grandparent xpath//grandchild tag name or xpath
+(//form[@id='login']//input)[1]
+//form[@id='login']//input[@id='username']
+4. Grand Child -> Grand Parent
+Grand Child's xpath/ancestor::Grand Parent tagname or xpath
+//label[@for='username']/ancestor::form
+5. Elder Sibling -> Younger Sibling
+Elder Sibling's xpath/following-sibling:: Younger Sib's tagname/xpath
+//input[@id='username']/following-sibling::label
+6. Younger Sibling -> Elder Sibling
+Younger sibling's xpath/preceding-sibling:: Elder sib's tagname or xpath
+//label[@for='username']/preceding-sibling::input
+7. Elder Cousin -> Younger Cousin
+Elder cousin's xpath/following:: younger cousin's tagname or xpath
+(//input[@id='username']/following::input)[2]
+//input[@id='username']/following::input[@id='password']
+8. Younger Cousin -> Elder Cousin
+Younger cousin's xpath/preceding::Elder Cousin's tag name or xpath
+(//input[@class='decorativeSubmit']/preceding::label)[1]
