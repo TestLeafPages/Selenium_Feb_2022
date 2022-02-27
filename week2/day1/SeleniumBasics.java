@@ -3,8 +3,11 @@ package week2.day1;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver.Options;
+import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -12,11 +15,14 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class SeleniumBasics {
 public static void main(String[] args) {
 	
-	WebDriverManager.chromedriver().setup();
+	WebDriverManager.edgedriver().setup();
 	//	System.setProperty("webdriver.chrome.driver", "C:\\Softwares\\Eclipse\\Eclipse-Workspace\\Feb Batch\\LearnSelenium\\drivers\\chromedriver.exe");
 	
-	ChromeDriver driver = new ChromeDriver();
+	EdgeDriver driver = new EdgeDriver();
 	driver.get("http://leaftaps.com/opentaps/control/main");
+	Options manage = driver.manage();
+	Window window = manage.window();
+	window.maximize();
 	driver.manage().window().maximize();
 	WebElement elementUsername = driver.findElement(By.id("username"));
 	elementUsername.sendKeys("Demosalesmanager");
