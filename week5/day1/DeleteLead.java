@@ -1,20 +1,25 @@
 package week5.day1;
 
 import org.openqa.selenium.By;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class DeleteLead extends ProjectSpecificMethods {
-	
-	@Test
-	public void runTC002() throws InterruptedException {
-		driver.findElement(By.id("username")).sendKeys("DemoSalesManager");
-		driver.findElement(By.id("password")).sendKeys("crmsfa");
+	@BeforeTest
+	public void setData() {
+		excelFilePath = "./testdata/TC002.xlsx";
+	}
+
+	@Test(dataProvider = "Dynamic_Data")
+	public void runTC002(String username, String password,String phoneNumber) throws InterruptedException {
+		driver.findElement(By.id("username")).sendKeys(username);
+		driver.findElement(By.id("password")).sendKeys(password);
 		driver.findElement(By.className("decorativeSubmit")).click();
 		driver.findElement(By.linkText("CRM/SFA")).click();
 		driver.findElement(By.linkText("Leads")).click();
 		driver.findElement(By.linkText("Find Leads")).click();
 		driver.findElement(By.xpath("//span[text()='Phone']")).click();
-		driver.findElement(By.xpath("//input[@name='phoneNumber']")).sendKeys("9");
+		driver.findElement(By.xpath("//input[@name='phoneNumber']")).sendKeys(phoneNumber);
 		driver.findElement(By.xpath("//button[text()='Find Leads']")).click();
 		Thread.sleep(2000);
 		String leadID = driver.findElement(By.xpath("//div[@class='x-grid3-cell-inner x-grid3-col-partyId']/a"))
