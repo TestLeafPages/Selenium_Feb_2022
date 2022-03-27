@@ -1,0 +1,23 @@
+Steps to implement BaseClass and multiple StepDefinition:
+----------------------------------------------------------
+Step1: Create multiple stepDefinition classes (Login.java & CreateLead.java)
+Step2: Segregate the methods into appropriate classes
+Step3: Create BaseClass under steps package
+Step4: Declare common driver in the BaseClass
+Step5: All the stepDefinition class should extends BaseClass
+		(Make sure to remove any driver declaration the stepDefinitions - Login.java)
+Step6: Declare the driver as static in the BaseClass
+
+Hooks Implementation:
+-----------------------
+Step1: Create HooksImplementation class under steps package
+Step2: Create methods preCondition() and postCondition()
+Step3: Apply @Before and @After annotations for pre and post methods respectively
+Step4: HooksImplementation should extends BaseClass
+
+Implementation of TestNG Annotation instead of Hooks:
+-----------------------------------------------------
+Step1: Create methods preCondition() and postCondition()
+Step2: Apply @BeforeMethod and @AfterMethod annotations for pre and post methods respectively in the BaseClass
+Step3: RunTest should extends BaseClass
+Step4: BaseClass should extends AbstractTestNGCucumberTests
